@@ -3,3 +3,4 @@ langchain
 langgraph
 python-dotenv
 langchain-google-genai
+yagmail

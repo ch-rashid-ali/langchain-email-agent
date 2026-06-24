@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 import yagmail
-import streamlit as st  # <-- YEH LINE ADD KAREIN
 
 # Sabse pehle .env file ko load karein
 load_dotenv()
@@ -54,27 +53,13 @@ graph = create_agent(
     tools=[send_email_tool],
     system_prompt="You are a helpful assistant, and you can send emails on behalf of me Rashid Ali as real email.",
 )
-st.title("AI Email Agent 🤖")
 
-# Browser par user se command lene ke liye text box
-user_prompt = st.text_input("Apna Hukam Likhein:", placeholder="e.g., Send mail to khan...")
+# %%
+inputs = {"messages": 
+          [{"role": "user", "content": "Send mail to khan.rashidali4343@gmail.com that i will be on leave tomorrow, Make it professional"}]}
 
-# Ek button banayein jise dabane par agent chalega
-run_button = st.button("Execute Agent")
-
-if run_button:
-    if user_prompt:
-        st.info("Agent process kar raha hai...")
-        
-        # Ab input manually dene ki jagah user_prompt variable se jayega
-        inputs = {"messages": [{"role": "user", "content": user_prompt}]}
-        
-        # Loop ke andar st.write lagayein taake output terminal ke bajaye browser par dikhe
-        for chunk in graph.stream(inputs, stream_mode="updates"):
-            st.write(chunk)
-            
-        st.success("Kaam Mukammal Ho Gaya!")
-    else:
-        st.warning("Pehle text box mein koi instruction likhein!")
+# %%
+for chunk in graph.stream(inputs, stream_mode="updates"):
+    print(chunk)
 
 

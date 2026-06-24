@@ -55,6 +55,10 @@ graph = create_agent(
 )
 
 # %%
+st.title("AI Email Agent 🤖")
+
+# Yeh line screen par niche input box bana degi
+user_prompt = st.chat_input("Apna Hukam Likhein...")
 inputs = {"messages": 
           [{"role": "user", "content": "Send mail to khan.rashidali4343@gmail.com that i will be on leave tomorrow, Make it professional"}]}
 

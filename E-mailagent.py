@@ -32,7 +32,7 @@ gemini_key = os.environ.get("GOOGLE_API_KEY")
 # Ab llm ko create karte waqt wo key pass karein
 llm = ChatGoogleGenerativeAI(
     api_key=gemini_key,           # Yeh ab automatic .env se key utha lega
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     temperature=0,
     max_tokens=None,
     timeout=None,
